@@ -1,6 +1,5 @@
 # Appa Bot
-![Appa](/images/profile_pic.jpg =250x250)
-<img src="https://github.com/yankskwesi/Appa/images/profiles_pic.jpg" width="100">
+![Appa](/images/profile_pic.jpg)
 
 A discord bot for onboarding and interacting with users. *Currently in Development*
 
