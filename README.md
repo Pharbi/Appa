@@ -1,5 +1,5 @@
 # Appa Bot
-[Appa](https://github.com/yankskwesi/Appa/images/profile_pic.jpg)
+![Appa](https://github.com/yankskwesi/Appa/images/profile_pic.jpg)
 
 
 A discord bot for onboarding and interacting with users. *Currently in Development*
