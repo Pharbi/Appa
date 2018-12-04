@@ -6,7 +6,7 @@ A discord bot for onboarding and interacting with users. *Currently in Developme
 
 ## Installation
 To install Appa in his current form, you'll need to use pip to install from the requirements text. 
-
+> This build now includes the rewrite branch of [Rapptz's Discord update](https://github.com/Rapptz/discord.py)
 
 > ### Mac / Unix
 > ` pip3 install -r requirements.txt`

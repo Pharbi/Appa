@@ -1,30 +1,35 @@
 import discord
+from discord.ext import commands
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+'''
+    APPA BOT for Discord, currently in short version
+    Looking forward to adding more features later
 
+'''
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 TOKEN = os.getenv('TOKEN')
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='!')
 
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
+@bot.command()
+async def hello(ctx):
+    if ctx.message.author == bot.user:
         return
 
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
+    if ctx.message.content.startswith('!hello'):
+        msg = 'Hello {0.author.mention}'.format(ctx.message)
+        await  ctx.send(msg)
 
-@client.event
+@bot.event
 async def on_ready():
     print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
+    print(bot.user.name)
+    print(bot.user.id)
     print('------')
 
-client.run(TOKEN)
+bot.run(TOKEN)
+
