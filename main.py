@@ -24,6 +24,13 @@ async def hello(ctx):
         msg = 'Hello {0.author.mention}'.format(ctx.message)
         await  ctx.send(msg)
 
+@bot.command()
+async def commands(ctx):
+    if ctx.message.content.startswith('!commands'):
+        msg = 'Currently my only command is to say hello. Try now with the !hello' +
+        'command '.format(ctx.message)
+        await ctx.send(msg)
+        
 @bot.event
 async def on_ready():
     print('Logged in as')

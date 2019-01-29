@@ -6,18 +6,42 @@ A discord bot for onboarding and interacting with users. *Currently in Developme
 
 ## Installation
 To install Appa in his current form, you'll need to use pip to install from the requirements text. 
-> This build now includes the rewrite branch of [Rapptz's Discord update](https://github.com/Rapptz/discord.py)
+> This build now includes the rewrite branch of [Rapptz's Discord update](https://github.com/Rapptz/discord.py/tree/rewrite)
 
-> ### Mac / Unix
-> ` pip3 install -r requirements.txt`
-> ### Windows
-> ` Somone will figure this one out `
+> ### Clone repository into a new folder
+> > ` mkdir Appa && git clone git@github.com:yankskwesi/Appa.git `
+
+
+> #### Mac / Unix
+> * Install virtualenv
+> > `python -m pip install --user virtualenv `
+> * Create virtual enviroment
+> > `python -m virtualenv env`
+> * Enter virtual enviroment
+> > Two schools of thought to activate, use either. `source env/bin/activate` or 
+`. env/bin/activate`
+
+
+> #### Windows
+> * Install virtualenv
+> > ` py -m pip install --user virtualenv `
+> * Create virtual enviroment
+> > ` py -m virtualenv env `
+> * Enter virtual enviroment
+> > ` .\env\Scripts\activate `
+
+
+> * Install from the requirements file, do it inside virtual env so it doesn't clutter system installs
+> > ` pip install -r requirements.txt`
 
 
 ## Commands
 **!hello**
 > Response: "Hello @user!"
 
+
+**!commands**
+> Response: Detailed reponse on singular hello command, will offer list functionality later
 
 ### Current roadmap
 Make it fully viable for proper onboarding.
