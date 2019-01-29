@@ -1,7 +1,0 @@
-runtime: python37
-entrypoint: gunicorn main:bot.run
-# env_variables:
-  
-handlers:
-  - url: /.*
-    script: auto
