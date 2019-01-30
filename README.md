@@ -41,7 +41,7 @@ To install Appa in his current form, you'll need to use pip to install from the 
 
 
 **!commands**
-> Response: Detailed reponse on singular hello command, will offer list functionality later
+> Response: Lists available commands that are in the commands directory of the appa bot
 
 
 **!yipyip**

@@ -1,12 +1,9 @@
 # Creating random giphy stuff, with !yipyip command
-import discord
 import giphy_client
 from giphy_client.rest import ApiException
-from pprint import pprint
 import os
 from os.path import join, dirname
-from dotenv import load_dotenv
-import json 
+from dotenv import load_dotenv 
 
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
@@ -39,3 +36,13 @@ class YipYip():
 				msg = "Unable to get random gif: ".append(exception + "\n")
 				print(msg)
 				return msg
+
+	def description(self):
+		ctx = self.msg
+		bot = self.bot
+
+		if ctx.message.author == bot.user:
+			return
+		else:
+			msg = "**!yipyip**: \nprovides a random Avatar The Last Airbender gif from Giphy!"
+			return msg

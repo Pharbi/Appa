@@ -1,8 +1,9 @@
 import discord
+import os
 from discord.ext import commands
 from commands import hello as hello_CMD
 from commands import yipyip as yip_yip_CMD
-import os
+from commands import help_CMD
 from os.path import join, dirname
 from dotenv import load_dotenv
 '''
@@ -18,21 +19,35 @@ TOKEN = os.getenv('TOKEN')
 bot = commands.Bot(command_prefix='!')
 
 @bot.command()
-async def hello(ctx):
+async def hello(ctx, *args):
     send = hello_CMD.Hello(ctx, bot)
-    resp = send.hi()
+
+    if "desc" in args:
+        resp = send.description()
+    else:
+        resp = send.hi()
     await ctx.send(resp)
 
 @bot.command()
-async def commands(ctx):
-    if ctx.message.content.startswith('!commands'):
-        msg = 'Currently my only commands are the ability to say hello and send random gifs. Try now with the !hello command or !yipyip '.format(ctx.message)
-        await ctx.send(msg)
+async def commands(ctx, *args):
+    send = help_CMD.Commands(ctx, bot)
+    
+    if "desc" in args:
+        resp = send.description()
+        
+    else:
+        resp = send.list()
+        resp += "add 'desc' to any of the commands to find out more!"
+    await ctx.send(resp)
 
 @bot.command()
-async def yipyip(ctx):
+async def yipyip(ctx, *args):
     send = yip_yip_CMD.YipYip(ctx, bot)
-    resp = send.giphy()
+
+    if "desc" in args:
+        resp = send.description()
+    else: 
+        resp = send.giphy()
     await ctx.send(resp)
 
 @bot.event
