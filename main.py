@@ -1,6 +1,9 @@
 import discord
-from discord.ext import commands
 import os
+from discord.ext import commands
+from commands import hello as hello_CMD
+from commands import yipyip as yip_yip_CMD
+from commands import help_CMD
 from os.path import join, dirname
 from dotenv import load_dotenv
 '''
@@ -16,19 +19,36 @@ TOKEN = os.getenv('TOKEN')
 bot = commands.Bot(command_prefix='!')
 
 @bot.command()
-async def hello(ctx):
-    if ctx.message.author == bot.user:
-        return
+async def hello(ctx, *args):
+    send = hello_CMD.Hello(ctx, bot)
 
-    if ctx.message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(ctx.message)
-        await  ctx.send(msg)
+    if "desc" in args:
+        resp = send.description()
+    else:
+        resp = send.hi()
+    await ctx.send(resp)
 
 @bot.command()
-async def commands(ctx):
-    if ctx.message.content.startswith('!commands'):
-        msg = 'Currently my only command is to say hello. Try now with the !hello command '.format(ctx.message)
-        await ctx.send(msg)
+async def commands(ctx, *args):
+    send = help_CMD.Commands(ctx, bot)
+    
+    if "desc" in args:
+        resp = send.description()
+        
+    else:
+        resp = send.list()
+        resp += "add 'desc' to any of the commands to find out more!"
+    await ctx.send(resp)
+
+@bot.command()
+async def yipyip(ctx, *args):
+    send = yip_yip_CMD.YipYip(ctx, bot)
+
+    if "desc" in args:
+        resp = send.description()
+    else: 
+        resp = send.giphy()
+    await ctx.send(resp)
 
 @bot.event
 async def on_ready():

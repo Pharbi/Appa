@@ -24,3 +24,4 @@ websockets==6.0
 Werkzeug==0.14.1
 yarl==1.2.6
 -e git:////github.com/Rapptz/discord.py.git@rewrite#egg=discord.py[voice]
+giphy-client==1.0.0
