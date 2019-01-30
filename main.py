@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from commands import hello as hello_CMD
+from commands import yipyip as yip_yip_CMD
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -17,18 +19,21 @@ bot = commands.Bot(command_prefix='!')
 
 @bot.command()
 async def hello(ctx):
-    if ctx.message.author == bot.user:
-        return
-
-    if ctx.message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(ctx.message)
-        await  ctx.send(msg)
+    send = hello_CMD.Hello(ctx, bot)
+    resp = send.hi()
+    await ctx.send(resp)
 
 @bot.command()
 async def commands(ctx):
     if ctx.message.content.startswith('!commands'):
-        msg = 'Currently my only command is to say hello. Try now with the !hello command '.format(ctx.message)
+        msg = 'Currently my only commands are the ability to say hello and send random gifs. Try now with the !hello command or !yipyip '.format(ctx.message)
         await ctx.send(msg)
+
+@bot.command()
+async def yipyip(ctx):
+    send = yip_yip_CMD.YipYip(ctx, bot)
+    resp = send.giphy()
+    await ctx.send(resp)
 
 @bot.event
 async def on_ready():
