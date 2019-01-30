@@ -21,6 +21,7 @@ class Commands():
 			else:
 				cmd = cmd[:-3]
 				msg += "**!" + cmd + "**\n"
+		msg.append("**!commands**\n")
 		return msg
 
 	def description(self):
